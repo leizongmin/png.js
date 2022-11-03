@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "jest",
-    "prettier": "prettier test/**/*.js png-node.js png.js --write"
+    "prettier": "prettier test/**/*.js png.js --write"
   },
   "main": "png.js",
   "engine": [
