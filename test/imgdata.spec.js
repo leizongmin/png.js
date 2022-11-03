@@ -1,4 +1,4 @@
-const PNGNode = require('../png-node');
+const PNG = require('../');
 const fs = require('fs');
 
 const files = fs.readdirSync('test/images');
@@ -11,7 +11,7 @@ function getImgData(Ctor, fileName) {
 describe('imgData', () => {
   describe('node', () => {
     test.each(files)('%s', (fileName) => {
-      expect(getImgData(PNGNode, fileName)).toMatchSnapshot();
+      expect(getImgData(PNG, fileName)).toMatchSnapshot();
     });
   });
 

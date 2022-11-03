@@ -24,13 +24,6 @@
   "engine": [
     "node >= v16.0.0"
   ],
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/test/patch-canvas.js",
-      "<rootDir>/zlib.js",
-      "<rootDir>/png.js"
-    ]
-  },
   "dependencies": {
     "pako": "^2.0.4"
   }

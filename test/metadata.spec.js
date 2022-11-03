@@ -1,4 +1,4 @@
-const PNGNode = require('../png-node');
+const PNG = require('../');
 const fs = require('fs');
 
 const files = fs.readdirSync('test/images');
@@ -12,7 +12,7 @@ function getMetaData(Ctor, fileName) {
 describe('metadata', () => {
   describe('node', () => {
     test.each(files)('%s', (fileName) => {
-      expect(getMetaData(PNGNode, fileName)).toMatchSnapshot();
+      expect(getMetaData(PNG, fileName)).toMatchSnapshot();
     });
   });
 
