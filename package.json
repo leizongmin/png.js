@@ -20,7 +20,7 @@
     "test": "jest",
     "prettier": "prettier test/**/*.js png-node.js png.js --write"
   },
-  "main": "png-node.js",
+  "main": "png.js",
   "engine": [
     "node >= v16.0.0"
   ],

@@ -18,22 +18,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const fs = require('fs');
-const zlib = require('zlib');
+const pako = require('pako/inflate');
 
 module.exports = class PNG {
-  static decode(path, fn) {
-    return fs.readFile(path, function(err, file) {
-      const png = new PNG(file);
-      return png.decode(pixels => fn(pixels));
-    });
-  }
-
-  static load(path) {
-    const file = fs.readFileSync(path);
-    return new PNG(file);
-  }
-
   constructor(data) {
     let i;
     this.data = data;
@@ -140,7 +127,7 @@ module.exports = class PNG {
               break;
           }
 
-          this.imgData = new Buffer(this.imgData);
+          this.imgData = new Uint8Array(this.imgData);
           return;
           break;
 
@@ -180,7 +167,7 @@ module.exports = class PNG {
   }
 
   decodePixels(fn) {
-    return zlib.inflate(this.imgData, (err, data) => {
+    return pako.inflate(this.imgData, (err, data) => {
       if (err) {
         throw err;
       }
@@ -188,7 +175,7 @@ module.exports = class PNG {
       const { width, height } = this;
       const pixelBytes = this.pixelBitlength / 8;
 
-      const pixels = new Buffer(width * height * pixelBytes);
+      const pixels = new Uint8Array(width * height * pixelBytes);
       const { length } = data;
       let pos = 0;
 
@@ -196,7 +183,7 @@ module.exports = class PNG {
         const w = Math.ceil((width - x0) / dx);
         const h = Math.ceil((height - y0) / dy);
         const scanlineLength = pixelBytes * w;
-        const buffer = singlePass ? pixels : new Buffer(scanlineLength * h);
+        const buffer = singlePass ? pixels : new Uint8Array(scanlineLength * h);
         let row = 0;
         let c = 0;
         while (row < h && pos < length) {
@@ -337,7 +324,7 @@ module.exports = class PNG {
     const { palette } = this;
     const { length } = palette;
     const transparency = this.transparency.indexed || [];
-    const ret = new Buffer(transparency.length + length);
+    const ret = new Uint8Array(transparency.length + length);
     let pos = 0;
     let c = 0;
 
@@ -392,11 +379,10 @@ module.exports = class PNG {
     }
   }
 
-  decode(fn) {
-    const ret = new Buffer(this.width * this.height * 4);
-    return this.decodePixels(pixels => {
-      this.copyToImageData(ret, pixels);
-      return fn(ret);
-    });
+  decode() {
+    const ret = new Uint8Array(this.width * this.height * 4);
+    const pixels = this.decodePixels();
+    this.copyToImageData(ret, pixels);
+    return ret;
   }
 };
