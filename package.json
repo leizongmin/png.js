@@ -1,6 +1,6 @@
 {
   "name": "@leizm/png-js",
-  "description": "A PNG decoder in JavaScript",
+  "description": "A PNG decoder in JavaScript for the Web-interoperable Runtime",
   "version": "1.0.0",
   "author": {
     "name": "LEI Zongmin",
