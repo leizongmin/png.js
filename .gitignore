@@ -4,3 +4,4 @@ playground/
 .vscode
 coverage
 /test/__snapshots__/
+package-lock.json
