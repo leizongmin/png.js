@@ -19,11 +19,12 @@
   },
   "scripts": {
     "test": "jest",
-    "prettier": "prettier test/**/*.js png.js examples/* index.html --write",
+    "prettier": "prettier --write test/**/*.js png.js png.d.ts examples/* index.html README.md",
     "bundle": "browserify -r ./png.js -o png-bundle.js -s PNG",
     "prepublish": "npm run bundle && npm test"
   },
   "main": "png.js",
+  "types": "png.d.ts",
   "engine": [
     "node >= v16.0.0"
   ],
