@@ -25,6 +25,11 @@
   },
   "main": "png.js",
   "types": "png.d.ts",
+  "files": [
+    "png-bundle.js",
+    "png.d.ts",
+    "png.js"
+  ],
   "engine": [
     "node >= v16.0.0"
   ],
