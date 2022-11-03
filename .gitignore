@@ -3,3 +3,4 @@
 playground/
 .vscode
 coverage
+/test/__snapshots__/
