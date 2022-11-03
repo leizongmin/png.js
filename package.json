@@ -1,5 +1,5 @@
 {
-    "name": "png-js",
+    "name": "@leizm/png-js",
     "description": "A PNG decoder in JavaScript",
     "version": "1.0.0",
     "author": {
