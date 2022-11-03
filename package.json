@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "jest",
-    "prettier": "prettier test/**/*.js png.js examples/* --write",
+    "prettier": "prettier test/**/*.js png.js examples/* index.html --write",
     "bundle": "browserify -r ./png.js -o png-bundle.js -s PNG",
     "prepublish": "npm run bundle && npm test"
   },

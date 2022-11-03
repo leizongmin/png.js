@@ -6,6 +6,7 @@
     <title>PNG.js example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="../png-bundle.js"></script>
+    <script src="utils.js"></script>
   </head>
 
   <body>
@@ -33,7 +34,7 @@
         if (!file) {
           return;
         }
-        PNG.load(`../images/${file}`, document.getElementById('png-canvas'));
+        loadPNG(`../images/${file}`, document.getElementById('png-canvas'));
       });
     </script>
   </body>
