@@ -18,7 +18,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const pako = require('pako/lib/inflate');
+const pako = require('pako/lib/inflate.js');
 
 module.exports = class PNG {
   constructor(data) {
