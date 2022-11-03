@@ -19,13 +19,6 @@ function loadPNG(url, canvas, callback) {
 }
 
 function renderPNG(png, canvas) {
-  // if this canvas was displaying another image before,
-  // stop the animation on it
-  if (canvas._png) {
-    canvas._png.stopAnimation();
-  }
-
-  canvas._png = png;
   canvas.width = png.width;
   canvas.height = png.height;
   const ctx = canvas.getContext('2d');
